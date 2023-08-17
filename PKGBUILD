@@ -2,7 +2,7 @@
 
 pkgname=('mdnsresponder' 'nss-mdnsresponder')
 pkgver=1790.40.31
-pkgrel=2
+pkgrel=3
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/apple-oss-distributions/mDNSResponder'
@@ -24,32 +24,15 @@ sha256sums=(
 )
 
 prepare() {
-  msg2 'Patching for Linux'
   cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver"
 
   for patch in "$srcdir"/*.patch; do
-    cat "$patch"
+    msg2 "Applying $(basename "$patch")..."
     patch --forward --strip=1 --input="$patch"
   done
-}
 
-build() {
-  if [ "$(echo $srcdir|grep -E '[ "]')" ]; then
-    error 'Spaces found in path, this will break the Makefile'
-    exit 1
-  fi
+  cd "mDNSPosix"
 
-  cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
-
-  if [ ! -f fixed ]; then
-    fix
-  fi
-
-  msg2 'Making mDNSResponder...'
-  make os=linux
-}
-
-fix() {
   msg2 'Fixing Makefile...'
   sed -i 's/CP = cp/CP = install -D/' Makefile
   sed -i 's/LN = ln -s -f/LN = ln -rs/' Makefile
@@ -66,7 +49,18 @@ fix() {
   sed -i 's/\$@ start/#$@ start/' Makefile
   sed -i 's:/sbin/:/bin/:' Makefile
   echo -e '\n$(STARTUPSCRIPTDIR): $(DESTDIR)\n\tmkdir -p $<' >>Makefile
-  :>fixed
+}
+
+build() {
+  if [ "$(echo $srcdir|grep -E '[ "]')" ]; then
+    error 'Spaces found in path, this will break the Makefile'
+    exit 1
+  fi
+
+  cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
+
+  msg2 'Making mDNSResponder...'
+  make os=linux
 }
 
 package_mdnsresponder() {
