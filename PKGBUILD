@@ -19,14 +19,16 @@ sha256sums=(
 
 prepare() {
   msg2 'Patching for Linux'
-  cd mDNSResponder-$pkgver
-  patch --forward --strip=1 --input="${srcdir}/linux_1.patch"
+  cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver"
+
+  # TODO: Patch for Linux
+  # patch --forward --strip=1 --input="${srcdir}/linux_1.patch"
 }
 
 build() {
   if [ "$(echo $srcdir|grep -E '[ "]')" ];then
   error 'Spaces found in path, this will break the Makefile';exit 1;fi
-  cd mDNSResponder-$pkgver/mDNSPosix
+  cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
   if [ ! -f fixed ];then fix;fi
   msg2 'Making mDNSResponder...'
   make os=linux
@@ -54,7 +56,7 @@ fix() {
 package_mdnsresponder() {
   backup=('etc/dnsextd.conf')
 
-  cd mDNSResponder-$pkgver/mDNSPosix
+  cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
   msg2 'Building...'
   make os=linux DESTDIR="$pkgdir" OPTINSTALL= install
   install -m755 "$srcdir"/dnsextd.rc "$pkgdir"/etc/rc.d/dnsextd
