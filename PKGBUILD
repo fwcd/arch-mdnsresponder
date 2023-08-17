@@ -27,7 +27,6 @@ prepare() {
   msg2 'Patching for Linux'
   cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver"
 
-  # TODO: Patch for Linux
   for patch in "$srcdir"/*.patch; do
     cat "$patch"
     patch --forward --strip=1 --input="$patch"
@@ -35,10 +34,17 @@ prepare() {
 }
 
 build() {
-  if [ "$(echo $srcdir|grep -E '[ "]')" ];then
-  error 'Spaces found in path, this will break the Makefile';exit 1;fi
+  if [ "$(echo $srcdir|grep -E '[ "]')" ]; then
+    error 'Spaces found in path, this will break the Makefile'
+    exit 1
+  fi
+
   cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
-  if [ ! -f fixed ];then fix;fi
+
+  if [ ! -f fixed ]; then
+    fix
+  fi
+
   msg2 'Making mDNSResponder...'
   make os=linux
 }
@@ -66,6 +72,7 @@ package_mdnsresponder() {
   backup=('etc/dnsextd.conf')
 
   cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
+
   msg2 'Installing...'
   make os=linux DESTDIR="$pkgdir" OPTINSTALL= install
   install -d "$pkgdir"/usr/share/man/man1
@@ -84,6 +91,7 @@ package_nss-mdnsresponder() {
   pkgdesc="Apple's official implementation of mdns host name resolution"
 
   cd "mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
+
   msg2 'Installing NSS...'
   make os=linux DESTDIR="$pkgdir" InstalledNSS
   install -D -m444 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
