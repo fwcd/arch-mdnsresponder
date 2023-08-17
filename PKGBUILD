@@ -82,7 +82,7 @@ package_nss-mdnsresponder() {
   backup=('etc/nss_mdns.conf')
   pkgdesc="Apple's official implementation of mdns host name resolution"
 
-  cd mDNSResponder-$pkgver/mDNSPosix
+  cd "mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
   msg2 'Building...'
   make os=linux DESTDIR="$pkgdir" InstalledNSS
   install -D -m444 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
