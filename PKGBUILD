@@ -68,8 +68,6 @@ package_mdnsresponder() {
   cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
   msg2 'Building...'
   make os=linux DESTDIR="$pkgdir" OPTINSTALL= install
-  install -m755 "$srcdir"/dnsextd.rc "$pkgdir"/etc/rc.d/dnsextd
-  install -m755 "$srcdir"/mdnsd.rc "$pkgdir"/etc/rc.d/mdnsd
   install -d "$pkgdir"/usr/share/man/man1
   install -D -m444 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -m444 ../mDNSShared/dns-sd.1 "$pkgdir"/usr/share/man/man1/
