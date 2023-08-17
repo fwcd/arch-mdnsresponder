@@ -6,3 +6,10 @@ A small experiment to see if Apple's Bonjour stack can run on Linux. While the p
 - The package uses an outdated version of the mDNSResponder (1790.40.31), since version 1807.101.2 [removes many of the cross-platform facilities](https://github.com/apple-oss-distributions/mDNSResponder/commit/d31f3447dfb1997e6457abf83502390b1f42f2ce).
 
 > **Note:** For production, one should strongly consider using Avahi instead, which seems to be the preferred (and maintained) mDNS/DNS-SD stack on Linux.
+
+## Credits
+
+The `PKGBUILD` is based on the fantastic work by `keithspg` and `SJ_UnderWater` on patching the build for Linux:
+
+- https://archlinuxarm.org/forum/viewtopic.php?f=7&t=14372
+- https://github.com/aur-archive/mdnsresponder
