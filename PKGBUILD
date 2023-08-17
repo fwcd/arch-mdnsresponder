@@ -2,12 +2,12 @@
 
 pkgname=('mdnsresponder' 'nss-mdnsresponder')
 pkgver=1790.40.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/apple-oss-distributions/mDNSResponder'
 license=('CUSTOM')
-depends=('glibc')
+depends=('glibc' 'mbedtls')
 options=('!libtool')
 provides=('avahi')
 conflicts=('avahi')
