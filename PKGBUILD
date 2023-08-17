@@ -52,7 +52,6 @@ fix() {
   sed -i 's/INSTBASE?=/INSTBASE?=$(DESTDIR)/' Makefile
   sed -i 's/STARTUPSCRIPTNAME?=mdns/STARTUPSCRIPTNAME?=mdnsd/' Makefile
   sed -i 's/MANPATH := /MANPATH := $(DESTDIR)/' Makefile
-  sed -i 's:STARTUPSCRIPTDIR = $(INSTBASE)/etc/rc.d:STARTUPSCRIPTDIR = $(DESTDIR)/etc/rc.d:' Makefile
   sed -i 's:/etc/nss_mdns.conf:$(DESTDIR)/etc/nss_mdns.conf:' Makefile
   sed -i 's/cp -f/#cp -f/' Makefile
   sed -i 's/sed -e/#sed -e/' Makefile
