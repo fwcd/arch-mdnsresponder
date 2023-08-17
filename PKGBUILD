@@ -64,6 +64,7 @@ fix() {
   sed -i 's/sed -e/#sed -e/' Makefile
   sed -i 's/\tldconfig/\t#ldconfig/' Makefile
   sed -i 's/\$@ start/#$@ start/' Makefile
+  sed -i 's:/sbin/:/bin/:' Makefile
   echo -e '\n$(STARTUPSCRIPTDIR): $(DESTDIR)\n\tmkdir -p $<' >>Makefile
   :>fixed
 }
