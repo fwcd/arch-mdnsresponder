@@ -5,15 +5,21 @@ pkgver=1790.40.31
 pkgrel=1
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='https://developer.apple.com/opensource/'
+url='https://github.com/apple-oss-distributions/mDNSResponder'
 license=('CUSTOM')
 depends=('glibc')
 options=('!libtool')
 provides=('avahi')
 conflicts=('avahi')
-source=(https://github.com/apple-oss-distributions/mDNSResponder/archive/refs/tags/mDNSResponder-$pkgver.tar.gz)
+source=(
+  '0001-Remove-Clang-block-directive.patch'
+  '0002-Remove-legacy-mbedtls-includes.patch'
+  "https://github.com/apple-oss-distributions/mDNSResponder/archive/refs/tags/mDNSResponder-$pkgver.tar.gz"
+)
 
 sha256sums=(
+  '6cc6b99908eb3268b16517b4f0266ae2e9fb9416dec9d560a5858c00cef76c81'
+  '773447a18fc2d9154c36b9bc3d12d15dbabaae40d9410d5fc9c52e3fed5349bc'
   'SKIP' # TODO
 )
 
@@ -22,7 +28,10 @@ prepare() {
   cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver"
 
   # TODO: Patch for Linux
-  # patch --forward --strip=1 --input="${srcdir}/linux_1.patch"
+  for patch in "$srcdir"/*.patch; do
+    cat "$patch"
+    patch --forward --strip=1 --input="$patch"
+  done
 }
 
 build() {

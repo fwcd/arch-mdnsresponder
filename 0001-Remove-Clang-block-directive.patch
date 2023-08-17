@@ -1,0 +1,24 @@
+From f84509b5c5aadfe2923589ca6f5d3f75c937627d Mon Sep 17 00:00:00 2001
+Date: Thu, 17 Aug 2023 17:13:52 +0200
+Subject: [PATCH 1/2] Remove Clang block directive
+
+---
+ mDNSShared/uds_daemon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mDNSShared/uds_daemon.c b/mDNSShared/uds_daemon.c
+index 9ae5f78..8c006b7 100644
+--- a/mDNSShared/uds_daemon.c
++++ b/mDNSShared/uds_daemon.c
+@@ -2912,7 +2912,7 @@ exit:
+ mDNSlocal mStatus add_domain_to_browser(request_state *info, const domainname *d)
+ {
+     browser_t *b, *p;
+-    __block mStatus err;
++    mStatus err;
+ 
+     for (p = info->u.browser.browsers; p; p = p->next)
+     {
+-- 
+2.41.0
+

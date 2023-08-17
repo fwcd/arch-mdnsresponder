@@ -1,0 +1,26 @@
+From 8d3f0a0a22a6320123e010442cdd18b38ecc7d28 Mon Sep 17 00:00:00 2001
+Date: Thu, 17 Aug 2023 17:14:09 +0200
+Subject: [PATCH 2/2] Remove legacy mbedtls includes
+
+---
+ mDNSPosix/mbedtls.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/mDNSPosix/mbedtls.c b/mDNSPosix/mbedtls.c
+index a73681b..ab8f8c7 100644
+--- a/mDNSPosix/mbedtls.c
++++ b/mDNSPosix/mbedtls.c
+@@ -38,10 +38,8 @@
+ #include <mbedtls/sha256.h>
+ #include <mbedtls/base64.h>
+ 
+-#include <mbedtls/certs.h>
+ #include <mbedtls/x509.h>
+ #include <mbedtls/ssl.h>
+-#include <mbedtls/config.h>
+ 
+ // Posix TLS server context
+ struct TLSContext_struct {
+-- 
+2.41.0
+
