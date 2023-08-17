@@ -65,7 +65,7 @@ package_mdnsresponder() {
   backup=('etc/dnsextd.conf')
 
   cd "$srcdir/mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
-  msg2 'Building...'
+  msg2 'Installing...'
   make os=linux DESTDIR="$pkgdir" OPTINSTALL= install
   install -d "$pkgdir"/usr/share/man/man1
   install -D -m444 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
@@ -83,7 +83,7 @@ package_nss-mdnsresponder() {
   pkgdesc="Apple's official implementation of mdns host name resolution"
 
   cd "mDNSResponder-mDNSResponder-$pkgver/mDNSPosix"
-  msg2 'Building...'
+  msg2 'Installing NSS...'
   make os=linux DESTDIR="$pkgdir" InstalledNSS
   install -D -m444 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
