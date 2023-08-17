@@ -1,7 +1,7 @@
 # Based on https://archlinuxarm.org/forum/viewtopic.php?f=7&t=14372
 
 pkgname=('mdnsresponder' 'nss-mdnsresponder')
-pkgver=1807.101.2
+pkgver=1790.40.31
 pkgrel=1
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
