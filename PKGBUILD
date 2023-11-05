@@ -2,7 +2,7 @@
 
 pkgname=('mdnsresponder' 'nss-mdnsresponder')
 pkgver=2200.0.8
-pkgrel=7
+pkgrel=8
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/apple-oss-distributions/mDNSResponder'
@@ -42,6 +42,7 @@ prepare() {
   sed -i 's/INSTBASE?=/INSTBASE?=$(DESTDIR)/' Makefile
   sed -i 's/STARTUPSCRIPTNAME?=mdns/STARTUPSCRIPTNAME?=mdnsd/' Makefile
   sed -i 's/MANPATH := /MANPATH := $(DESTDIR)/' Makefile
+  sed -i 's:$(wildcard /usr/share/man),:/usr/share/man,:' Makefile
   sed -i 's:STARTUPSCRIPTDIR = $(INSTBASE)/etc.*:STARTUPSCRIPTDIR = $(DESTDIR)/etc/init.d:' Makefile
   sed -i 's:$(wildcard /etc.*,:,:' Makefile
   sed -i 's:/etc/nss_mdns.conf:$(DESTDIR)/etc/nss_mdns.conf:' Makefile
