@@ -13,7 +13,7 @@ provides=('avahi')
 conflicts=('avahi')
 source=(
   '0001-Remove-legacy-mbedtls-includes.patch'
-  '0001-Include-limit.h-in-PlatformCommon.patch'
+  '0002-Include-limit.h-in-PlatformCommon.patch'
   "https://github.com/apple-oss-distributions/mDNSResponder/archive/refs/tags/mDNSResponder-$pkgver.tar.gz"
 )
 
