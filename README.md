@@ -1,10 +1,23 @@
 # Arch Linux package for mDNSResponder
 
-A small experiment to see if [Apple's Bonjour stack](https://github.com/apple-oss-distributions/mDNSResponder), i.e. their implementation of [Multicast DNS (mDNS)](https://en.wikipedia.org/wiki/Multicast_DNS) and [DNS Service Discovery (DNS-SD)](https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD), can run on Linux. While the package builds, there are some caveats:
-
-- The package still uses (legacy) SysVinit-style init scripts, which may need a compatibility layer to run on top of systemd. This could probably be fixed by writing custom systemd units instead.
+A small experiment to see if [Apple's Bonjour stack](https://github.com/apple-oss-distributions/mDNSResponder), i.e. their implementation of [Multicast DNS (mDNS)](https://en.wikipedia.org/wiki/Multicast_DNS) and [DNS Service Discovery (DNS-SD)](https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD), can run on Linux.
 
 > **Note:** For production, one should strongly consider using Avahi instead, which seems to be the preferred (and maintained) mDNS/DNS-SD stack on Linux.
+
+## Usage
+
+After installing the package, run
+
+```sh
+sudo systemctl enable mdnsd
+sudo systemctl start mdnsd
+```
+
+to start the daemon. You can now try browsing for services on the network, e.g. with
+
+```sh
+dns-sd -B _services._dns-sd._udp
+```
 
 ## Credits
 
