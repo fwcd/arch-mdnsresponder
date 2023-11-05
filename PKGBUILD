@@ -2,14 +2,13 @@
 
 pkgname=('mdnsresponder' 'nss-mdnsresponder')
 pkgver=2200.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/apple-oss-distributions/mDNSResponder'
 license=('CUSTOM')
 depends=('glibc' 'mbedtls')
 options=('!libtool')
-provides=('avahi')
 conflicts=('avahi')
 source=(
   '0001-Remove-legacy-mbedtls-includes.patch'
