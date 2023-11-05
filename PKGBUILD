@@ -1,10 +1,10 @@
 # Based on https://archlinuxarm.org/forum/viewtopic.php?f=7&t=14372
 
 pkgname=('mdnsresponder' 'nss-mdnsresponder')
-pkgver=1790.40.31
+pkgver=2200.0.8
 pkgrel=3
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/apple-oss-distributions/mDNSResponder'
 license=('CUSTOM')
 depends=('glibc' 'mbedtls')
@@ -12,15 +12,15 @@ options=('!libtool')
 provides=('avahi')
 conflicts=('avahi')
 source=(
-  '0001-Remove-Clang-block-directive.patch'
-  '0002-Remove-legacy-mbedtls-includes.patch'
+  '0001-Remove-legacy-mbedtls-includes.patch'
+  '0001-Include-limit.h-in-PlatformCommon.patch'
   "https://github.com/apple-oss-distributions/mDNSResponder/archive/refs/tags/mDNSResponder-$pkgver.tar.gz"
 )
 
 sha256sums=(
-  '6cc6b99908eb3268b16517b4f0266ae2e9fb9416dec9d560a5858c00cef76c81'
-  '773447a18fc2d9154c36b9bc3d12d15dbabaae40d9410d5fc9c52e3fed5349bc'
-  'SKIP' # TODO
+  'de4b39d505241fe2162997fab30ef77b357360e246ec978f5a93d46478e141f9'
+  '25560d37d41cb2caa61de5d1e8c96876f73b82a1030f957e9a26c1aa407d3202'
+  '68b6128481cb607678f81bce9f3868c5ad1f6d93b9ac07fa752a6e3d68e11f24'
 )
 
 prepare() {
