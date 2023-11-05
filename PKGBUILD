@@ -2,7 +2,7 @@
 
 pkgname=('mdnsresponder' 'nss-mdnsresponder')
 pkgver=2200.0.8
-pkgrel=6
+pkgrel=7
 pkgdesc="Apple's official implementation of mDNS/DNS-SD/Bonjour/Zeroconf"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/apple-oss-distributions/mDNSResponder'
@@ -14,15 +14,13 @@ source=(
   '0001-Remove-legacy-mbedtls-includes.patch'
   '0002-Include-limit.h-in-PlatformCommon.patch'
   'mdnsd.service'
-  'mdnsresponder.sysusers'
   "https://github.com/apple-oss-distributions/mDNSResponder/archive/refs/tags/mDNSResponder-$pkgver.tar.gz"
 )
 
 sha256sums=(
   'de4b39d505241fe2162997fab30ef77b357360e246ec978f5a93d46478e141f9'
   '25560d37d41cb2caa61de5d1e8c96876f73b82a1030f957e9a26c1aa407d3202'
-  'bbe5b7cc62d679b009d39f25f02e4eed2521781e7c8f4386b487a8c47007ad44'
-  'c27a79f7ce1fac73e5381389765b713204eeb1797614f606c5be33b88c3cd390'
+  'd19f98fbebbd0c77859c02592cc6d8c218b741f0c5b2a20c88bbd8ea623882a2'
   '68b6128481cb607678f81bce9f3868c5ad1f6d93b9ac07fa752a6e3d68e11f24'
 )
 
@@ -84,7 +82,6 @@ package_mdnsresponder() {
 
   msg2 'Replacing legacy SysVinit scripts with systemd unit...'
   rm -rf "$pkgdir"/etc/init.d
-  install -Dm444 "$srcdir/mdnsresponder.sysusers" "$pkgdir/usr/lib/sysusers.d/mdnsresponder.conf"
   install -Dm444 "$srcdir/mdnsd.service" "$pkgdir/usr/lib/systemd/system/mdnsd.service"
 }
 

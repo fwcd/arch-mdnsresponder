@@ -3,9 +3,9 @@ Description=Apple Multicast DNS / DNS Service Discovery daemon
 After=network.target local-fs.target
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/mdnsd -debug
-User=mdnsresponder
+Type=forking
+ExecStart=/usr/bin/mdnsd
+PIDFile=/var/run/mdnsd.pid
 
 [Install]
 WantedBy=multi-user.target
