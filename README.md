@@ -1,6 +1,6 @@
 # Arch Linux package for mDNSResponder
 
-A small experiment to see if [Apple's Bonjour stack](https://github.com/apple-oss-distributions/mDNSResponder) can run on Linux. While the package builds, there are some caveats:
+A small experiment to see if [Apple's Bonjour stack](https://github.com/apple-oss-distributions/mDNSResponder), i.e. their implementation of [Multicast DNS (mDNS)](https://en.wikipedia.org/wiki/Multicast_DNS) and [DNS Service Discovery (DNS-SD)](https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD), can run on Linux. While the package builds, there are some caveats:
 
 - The package still uses (legacy) SysVinit-style init scripts, which may need a compatibility layer to run on top of systemd. This could probably be fixed by writing custom systemd units instead.
 
