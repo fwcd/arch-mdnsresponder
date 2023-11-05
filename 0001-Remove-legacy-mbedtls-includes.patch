@@ -1,6 +1,6 @@
 From 8d3f0a0a22a6320123e010442cdd18b38ecc7d28 Mon Sep 17 00:00:00 2001
 Date: Thu, 17 Aug 2023 17:14:09 +0200
-Subject: [PATCH 2/2] Remove legacy mbedtls includes
+Subject: [PATCH 1/1] Remove legacy mbedtls includes
 
 ---
  mDNSPosix/mbedtls.c | 2 --
