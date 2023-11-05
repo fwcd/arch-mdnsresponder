@@ -1,0 +1,23 @@
+From a3d8f419a1e499a8c15e9c59d6fca9767447154c Mon Sep 17 00:00:00 2001
+Date: Sun, 5 Nov 2023 15:14:27 +0000
+Subject: [PATCH] Include <limit.h> in PlatformCommon
+
+---
+ mDNSShared/PlatformCommon.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mDNSShared/PlatformCommon.c b/mDNSShared/PlatformCommon.c
+index 9ce1546..c308af3 100644
+--- a/mDNSShared/PlatformCommon.c
++++ b/mDNSShared/PlatformCommon.c
+@@ -32,6 +32,7 @@
+ #include <time.h>
+ #include <sys/time.h>           // Needed for #include <sys/time.h>().
+ #include <assert.h>
++#include <limits.h>
+ 
+ 
+ #include "mDNSEmbeddedAPI.h"    // Defines the interface provided to the client layer above
+-- 
+2.42.0
+
