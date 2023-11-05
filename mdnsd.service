@@ -1,0 +1,11 @@
+[Unit]
+Description=Apple Multicast DNS / DNS Service Discovery daemon
+After=network.target local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mdnsd -debug
+User=mdnsresponder
+
+[Install]
+WantedBy=multi-user.target
